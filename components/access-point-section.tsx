@@ -24,7 +24,7 @@ const tiers = [
     cta: "Start Shopping",
     href: "/catalog",
     gradient: "from-blue-600/20 to-purple-600/20",
-    image: "/home/Red_CentreNATS_Cars.jpeg",
+    image: "/new/wheel_alignin.jpeg",
   },
   {
     icon: Wrench,
@@ -44,27 +44,27 @@ const tiers = [
     href: "/contact",
     gradient: "from-accent/20 to-orange-600/20",
     featured: true,
-    image: "/home/4-benefits-of-hiring-a-professional-certified-mechanic.jpeg.webp",
-  }
-  // {
-  //   icon: Building2,
-  //   title: "Enterprise Solutions",
-  //   stat: "50+",
-  //   statLabel: "Business Partners",
-  //   subtitle: "Custom fleet & business solutions",
-  //   description:
-  //     "Tailored solutions for dealerships, fleet operators, and automotive businesses. API integration, custom pricing, and dedicated support.",
-  //   features: [
-  //     "Custom Contract Pricing",
-  //     "API & System Integration",
-  //     "Inventory Management Tools",
-  //     "White-Label Solutions",
-  //   ],
-  //   cta: "Contact Sales",
-  //   href: "/contact",
-  //   gradient: "from-green-600/20 to-teal-600/20",
-  //   image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=600&fit=crop&q=80",
-  // },
+    image: "/new/work.jpeg",
+  },
+  {
+    icon: Building2,
+    title: "Enterprise Solutions",
+    stat: "50+",
+    statLabel: "Business Partners",
+    subtitle: "Custom fleet & business solutions",
+    description:
+      "Tailored solutions for dealerships, fleet operators, and automotive businesses. API integration, custom pricing, and dedicated support.",
+    features: [
+      "Custom Contract Pricing",
+      "API & System Integration",
+      "Inventory Management Tools",
+      "White-Label Solutions",
+    ],
+    cta: "Contact Sales",
+    href: "/contact",
+    gradient: "from-green-600/20 to-teal-600/20",
+    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=600&fit=crop&q=80",
+  },
 ]
 
 export function AccessPointSection() {

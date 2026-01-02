@@ -6,10 +6,11 @@ import { useSelector, useDispatch } from "react-redux"
 import type { RootState } from "@/lib/store"
 import { filterByCategory, searchParts } from "@/lib/features/parts-slice"
 import { addToCart } from "@/lib/features/cart-slice"
-import { Search, Filter, Grid3X3, List, Plus, Check } from "lucide-react"
+import { Search, Filter, Grid3X3, List, Plus, Check, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
+import Link from "next/link"
 
 const categories = ["All", "Brakes", "Engine", "Suspension", "Exhaust", "Wheels"]
 
@@ -63,7 +64,7 @@ export function CatalogContent() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-4">
-            Parts <span className="font-semibold">Catalog</span>
+            Parts <span className="font-semibold">Catalogue</span>
           </h1>
           <p className="text-muted font-light leading-relaxed max-w-2xl mx-auto">
             Premium automotive components engineered for excellence
@@ -158,42 +159,49 @@ export function CatalogContent() {
                 >
                   <div className="group glass-card rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300">
                     {/* Image */}
-                    <div className="relative h-64 overflow-hidden">
-                      <Image
-                        src={item.image || "/placeholder.svg"}
-                        alt={item.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      {!item.inStock && (
-                        <div className="absolute top-4 right-4 px-3 py-1 bg-destructive/90 text-white text-xs font-medium rounded">
-                          Out of Stock
-                        </div>
-                      )}
-                    </div>
+                    <Link href={`/parts/${item.id}`} className="block">
+                      <div className="relative h-64 overflow-hidden">
+                        <Image
+                          src={item.image || "/placeholder.svg"}
+                          alt={item.name}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        {!item.inStock && (
+                          <div className="absolute top-4 right-4 px-3 py-1 bg-destructive/90 text-white text-xs font-medium rounded">
+                            Out of Stock
+                          </div>
+                        )}
+                      </div>
+                    </Link>
 
                     {/* Content */}
                     <div className="p-6">
-                      <span className="text-xs text-accent font-medium tracking-wider uppercase">{item.category}</span>
-                      <h3 className="text-xl font-light text-white mt-2 mb-2">{item.name}</h3>
-                      <p className="text-muted font-light text-sm leading-relaxed mb-4">{item.description}</p>
+                      <Link href={`/parts/${item.id}`}>
+                        <span className="text-xs text-accent font-medium tracking-wider uppercase">{item.category}</span>
+                        <h3 className="text-xl font-light text-white mt-2 mb-2 group-hover:text-accent transition-colors">
+                          {item.name}
+                        </h3>
+                        <p className="text-muted font-light text-sm leading-relaxed mb-4">{item.description}</p>
+                      </Link>
 
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between gap-2">
                         <span className="text-2xl font-light text-white">${item.price.toLocaleString()}</span>
-                        <Button onClick={() => handleAddToCart(item)} disabled={!item.inStock} className="group/btn">
-                          {addedItems.has(item.id) ? (
-                            <>
-                              <Check className="h-4 w-4 mr-2" />
-                              Added
-                            </>
-                          ) : (
-                            <>
-                              <Plus className="h-4 w-4 mr-2" />
-                              Add to Cart
-                            </>
-                          )}
-                        </Button>
+                        <div className="flex gap-2">
+                          <Link href={`/parts/${item.id}`}>
+                            <Button variant="outline" size="sm" className="border-white/20 hover:bg-white/10">
+                              <Eye className="h-4 w-4" />
+                            </Button>
+                          </Link>
+                          <Button onClick={() => handleAddToCart(item)} disabled={!item.inStock} size="sm">
+                            {addedItems.has(item.id) ? (
+                              <Check className="h-4 w-4" />
+                            ) : (
+                              <Plus className="h-4 w-4" />
+                            )}
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -219,14 +227,16 @@ export function CatalogContent() {
                   <div className="group glass-card rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300">
                     <div className="flex flex-col md:flex-row">
                       {/* Image */}
-                      <div className="relative w-full md:w-64 h-48 md:h-auto overflow-hidden">
-                        <Image
-                          src={item.image || "/placeholder.svg"}
-                          alt={item.name}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      </div>
+                      <Link href={`/parts/${item.id}`} className="block md:w-64 flex-shrink-0">
+                        <div className="relative w-full h-48 md:h-64 overflow-hidden">
+                          <Image
+                            src={item.image || "/placeholder.svg"}
+                            alt={item.name}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                      </Link>
 
                       {/* Content */}
                       <div className="flex-1 p-6 flex flex-col justify-between">
@@ -241,28 +251,40 @@ export function CatalogContent() {
                               </span>
                             )}
                           </div>
-                          <h3 className="text-2xl font-light text-white mb-2">{item.name}</h3>
+                          <Link href={`/parts/${item.id}`}>
+                            <h3 className="text-2xl font-light text-white mb-2 group-hover:text-accent transition-colors">
+                              {item.name}
+                            </h3>
+                          </Link>
                           <p className="text-muted font-light leading-relaxed mb-4">{item.description}</p>
                           <p className="text-sm text-muted font-light">
                             Compatible with: {item.compatibility.join(", ")}
                           </p>
                         </div>
 
-                        <div className="flex items-center justify-between mt-6">
+                        <div className="flex items-center justify-between mt-6 gap-4">
                           <span className="text-3xl font-light text-white">${item.price.toLocaleString()}</span>
-                          <Button onClick={() => handleAddToCart(item)} disabled={!item.inStock} size="lg">
-                            {addedItems.has(item.id) ? (
-                              <>
-                                <Check className="h-4 w-4 mr-2" />
-                                Added
-                              </>
-                            ) : (
-                              <>
-                                <Plus className="h-4 w-4 mr-2" />
-                                Add to Cart
-                              </>
-                            )}
-                          </Button>
+                          <div className="flex gap-2">
+                            <Link href={`/parts/${item.id}`}>
+                              <Button variant="outline" className="border-white/20 hover:bg-white/10">
+                                <Eye className="h-4 w-4 mr-2" />
+                                View Details
+                              </Button>
+                            </Link>
+                            <Button onClick={() => handleAddToCart(item)} disabled={!item.inStock} size="lg">
+                              {addedItems.has(item.id) ? (
+                                <>
+                                  <Check className="h-4 w-4 mr-2" />
+                                  Added
+                                </>
+                              ) : (
+                                <>
+                                  <Plus className="h-4 w-4 mr-2" />
+                                  Add to Cart
+                                </>
+                              )}
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </div>

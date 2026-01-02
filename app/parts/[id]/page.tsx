@@ -418,56 +418,7 @@ export default function PartDetailPage({ params }: { params: Promise<{ id: strin
         </div>
       </section>
 
-      {/* Installation Videos */}
-      {part.videos && part.videos.length > 0 && (
-        <section className="px-6 py-16 bg-black/50">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <Play className="h-6 w-6 text-accent" />
-                <h2 className="text-2xl font-light text-white">
-                  Installation <span className="font-semibold">Videos</span>
-                </h2>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {part.videos.map((video, index) => (
-                  <motion.button
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    onClick={() => openVideoModal(video)}
-                    className="group relative aspect-video rounded-xl overflow-hidden bg-white/5"
-                  >
-                    <Image
-                      src={video.thumbnail || "/placeholder.svg"}
-                      alt={video.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-accent/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play className="h-7 w-7 text-white fill-white ml-1" />
-                      </div>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <p className="text-white font-medium text-left">{video.title}</p>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      )}
-
+  
       {/* Tabs Section */}
       <section className="px-6 py-16">
         <div className="max-w-7xl mx-auto">

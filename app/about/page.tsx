@@ -52,7 +52,7 @@ export default function AboutPage() {
       <section className="relative h-[70vh] w-full overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/automotive-workshop-dramatic-lighting.jpg"
+            src="/new/banner.jpeg"
             alt="About Simbi Market"
             fill
             className="object-cover"
@@ -134,7 +134,7 @@ export default function AboutPage() {
               className="relative"
             >
               <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                <Image src="/quality-parts-inspection-dramatic.jpg" alt="Our Mission" fill className="object-cover" />
+                <Image src="/new/about.jpeg" alt="Our Mission" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
               <div className="absolute -bottom-8 -left-8 glass-card rounded-xl p-6 max-w-xs">
@@ -199,7 +199,7 @@ export default function AboutPage() {
             >
               <div className="relative h-[500px] rounded-2xl overflow-hidden">
                 <Image
-                  src="/quality-control-automotive-dramatic.jpg"
+                  src="/new/engine1.jpeg"
                   alt="Quality Assurance"
                   fill
                   className="object-cover"
@@ -246,7 +246,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-32 px-6 bg-black/50">
+      {/* <section className="py-32 px-6 bg-black/50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -294,7 +294,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>

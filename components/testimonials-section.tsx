@@ -2,31 +2,32 @@
 
 import { motion } from "framer-motion"
 import { Star, Quote } from "lucide-react"
-import Image from "next/image"
 
 const testimonials = [
   {
     name: "Mike Rukudzo",
     role: "Auto Mechanic",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&q=80",
     rating: 5,
     text: "Simbi Market has been my go-to supplier for a year. The quality is consistently excellent and delivery is always on time. Highly recommended!",
   },
   {
     name: "Sarah Sibanda",
     role: "Car Enthusiast",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&q=80",
     rating: 5,
     text: "Amazing selection and expert support. The customer support team helped me find exactly what I needed for my project car. Outstanding service!",
   },
   {
     name: "David Moyo",
     role: "Performance Shop Owner",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&q=80",
     rating: 5,
     text: "Professional grade parts at great prices. Simbi Market understands what performance enthusiasts need. They've never let me down!",
   },
 ]
+
+function getInitials(name: string) {
+  const parts = name.split(" ")
+  return parts.map((part) => part[0]).join("")
+}
 
 export function TestimonialsSection() {
   return (
@@ -69,13 +70,8 @@ export function TestimonialsSection() {
               <p className="text-white/80 font-light leading-relaxed mb-8">"{testimonial.text}"</p>
 
               <div className="flex items-center gap-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white/10">
-                  <Image
-                    src={testimonial.image || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
+                  <span className="text-white font-semibold text-sm">{getInitials(testimonial.name)}</span>
                 </div>
                 <div>
                   <p className="text-white font-medium">{testimonial.name}</p>

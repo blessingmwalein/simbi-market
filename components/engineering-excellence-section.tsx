@@ -33,7 +33,7 @@ export function EngineeringExcellenceSection() {
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
         <Image
-          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&h=1080&fit=crop&q=80"
+          src="/new/transmission.jpeg"
           alt="Engineering Excellence"
           fill
           className="object-cover"

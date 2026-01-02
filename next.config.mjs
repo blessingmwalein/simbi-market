@@ -5,9 +5,11 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    domains: ['images.unsplash.com'],
   },
   // Empty turbopack config to silence the warning
   turbopack: {},
+  output: 'standalone',
 }
 
 export default nextConfig

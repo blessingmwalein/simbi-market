@@ -12,87 +12,9 @@ import Image from "next/image"
 
 const navItems = [
   {
-    label: "Parts",
-    href: "/catalog",
-    megaMenu: {
-      categories: [
-        {
-          title: "Engine Components",
-          items: [
-            { name: "Turbochargers", href: "/catalog?category=Engine" },
-            { name: "Intake Systems", href: "/catalog?category=Engine" },
-            { name: "Exhaust Systems", href: "/catalog?category=Exhaust" },
-            { name: "Performance Chips", href: "/catalog?category=Engine" },
-          ],
-        },
-        {
-          title: "Brakes & Suspension",
-          items: [
-            { name: "Brake Systems", href: "/catalog?category=Brakes" },
-            { name: "Suspension Kits", href: "/catalog?category=Suspension" },
-            { name: "Coilovers", href: "/catalog?category=Suspension" },
-            { name: "Brake Pads", href: "/catalog?category=Brakes" },
-          ],
-        },
-        {
-          title: "Wheels & Tires",
-          items: [
-            { name: "Alloy Wheels", href: "/catalog?category=Wheels" },
-            { name: "Performance Tires", href: "/catalog?category=Wheels" },
-            { name: "Wheel Accessories", href: "/catalog?category=Wheels" },
-          ],
-        },
-      ],
-      featured: {
-        title: "Featured Part",
-        name: "Carbon Fiber Intake",
-        price: "$2,499",
-        image: "/carbon-fiber-engine-component-macro-photography.jpg",
-        href: "/parts/2",
-      },
-    },
-  },
-  {
-    label: "Brands",
-    href: "/catalog",
-    megaMenu: {
-      categories: [
-        {
-          title: "Luxury Brands",
-          items: [
-            { name: "Range Rover", href: "/catalog?brand=rangerover" },
-            { name: "Land Rover", href: "/catalog?brand=landrover" },
-            { name: "Mercedes-Benz", href: "/catalog?brand=mercedes" },
-            { name: "BMW", href: "/catalog?brand=bmw" },
-          ],
-        },
-        {
-          title: "Performance",
-          items: [
-            { name: "Porsche", href: "/catalog?brand=porsche" },
-            { name: "Audi", href: "/catalog?brand=audi" },
-            { name: "Tesla", href: "/catalog?brand=tesla" },
-            { name: "Jaguar", href: "/catalog?brand=jaguar" },
-          ],
-        },
-        {
-          title: "Japanese Premium",
-          items: [
-            { name: "Lexus", href: "/catalog?brand=lexus" },
-            { name: "Toyota", href: "/catalog?brand=toyota" },
-            { name: "Honda", href: "/catalog?brand=honda" },
-            { name: "Nissan", href: "/catalog?brand=nissan" },
-          ],
-        },
-      ],
-      featured: {
-        title: "Popular Brand",
-        name: "Range Rover Parts",
-        price: "From $299",
-        image: "/luxury-suv-range-rover-front-view-dramatic.jpg",
-        href: "/catalog?brand=rangerover",
-      },
-    },
+    label: "Home",
+    href: "/",
+    megaMenu: null,
   },
   {
     label: "Services",
@@ -118,7 +40,13 @@ const navItems = [
           ],
         },
       ],
-      featured: null,
+      featured: {
+        title: "Expert Services",
+        name: "Professional Installation",
+        price: "Book Now",
+        image: "/new/shocks.jpeg",
+        href: "/contact",
+      },
     },
   },
   {
@@ -143,7 +71,62 @@ const navItems = [
           ],
         },
       ],
-      featured: null,
+      featured: {
+        title: "Quality You Can Trust",
+        name: "Premium Parts Supplier",
+        price: "Learn More",
+        image: "/new/engineworks.jpeg",
+        href: "/about",
+      },
+    },
+  },
+  {
+    label: "Shop Online",
+    href: "/catalog",
+    highlighted: true,
+    megaMenu: {
+      categories: [
+        {
+          title: "Parts",
+          items: [
+            { name: "Engine Components", href: "/catalog?category=Engine" },
+            { name: "Brakes & Suspension", href: "/catalog?category=Brakes" },
+            { name: "Exhaust Systems", href: "/catalog?category=Exhaust" },
+            { name: "Wheels & Tires", href: "/catalog?category=Wheels" },
+            { name: "Suspension Kits", href: "/catalog?category=Suspension" },
+            { name: "Turbochargers", href: "/catalog?category=Engine" },
+          ],
+        },
+        {
+          title: "Brands",
+          items: [
+            { name: "Range Rover", href: "/catalog?brand=rangerover" },
+            { name: "Land Rover", href: "/catalog?brand=landrover" },
+            { name: "Mercedes-Benz", href: "/catalog?brand=mercedes" },
+            { name: "BMW", href: "/catalog?brand=bmw" },
+            { name: "Audi", href: "/catalog?brand=audi" },
+            { name: "Toyota", href: "/catalog?brand=toyota" },
+          ],
+        },
+        {
+          title: "Popular Categories",
+          items: [
+            { name: "Performance Chips", href: "/catalog?category=Engine" },
+            { name: "Brake Pads", href: "/catalog?category=Brakes" },
+            { name: "Alloy Wheels", href: "/catalog?category=Wheels" },
+            { name: "Coilovers", href: "/catalog?category=Suspension" },
+            { name: "Intake Systems", href: "/catalog?category=Engine" },
+            { name: "Performance Tires", href: "/catalog?category=Wheels" },
+          ],
+        },
+      ],
+      featured: {
+        title: "3+ Million Parts Available",
+        name: "Premium Auto Parts",
+        price: "50,000+ parts per brand",
+        image: "/carbon-fiber-engine-component-macro-photography.jpg",
+        href: "/catalog",
+      },
     },
   },
 ]
@@ -181,21 +164,34 @@ export function Navigation() {
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
-                <div key={item.label} onMouseEnter={() => setActiveMenu(item.label)} className="relative">
-                  <button
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium tracking-wide transition-colors rounded-full ${
-                      activeMenu === item.label
-                        ? "text-white bg-white/10"
-                        : "text-white/80 hover:text-white hover:bg-white/5"
-                    }`}
-                  >
-                    {item.label}
-                    <ChevronDown
-                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                        activeMenu === item.label ? "rotate-180" : ""
+                <div key={item.label} onMouseEnter={() => item.megaMenu && setActiveMenu(item.label)} className="relative">
+                  {item.megaMenu ? (
+                    <button
+                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium tracking-wide transition-colors rounded-full ${
+                        item.highlighted
+                          ? activeMenu === item.label
+                            ? "text-white bg-blue-600"
+                            : "text-white bg-blue-500 hover:bg-blue-600"
+                          : activeMenu === item.label
+                          ? "text-white bg-white/10"
+                          : "text-white/80 hover:text-white hover:bg-white/5"
                       }`}
-                    />
-                  </button>
+                    >
+                      {item.label}
+                      <ChevronDown
+                        className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                          activeMenu === item.label ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium tracking-wide transition-colors rounded-full text-white/80 hover:text-white hover:bg-white/5"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>
@@ -336,29 +332,41 @@ export function Navigation() {
             </div>
             <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(100vh-4rem)]">
               {navItems.map((item) => (
-                <div key={item.label} className="border-b border-white/10 pb-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">{item.label}</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {item.megaMenu.categories.map((category) => (
-                      <div key={category.title}>
-                        <p className="text-xs text-muted uppercase tracking-wider mb-2">{category.title}</p>
-                        <ul className="space-y-2">
-                          {category.items.slice(0, 3).map((subItem) => (
-                            <li key={subItem.name}>
-                              <Link
-                                href={subItem.href}
-                                className="text-sm text-white/70 hover:text-white"
-                                onClick={() => setMobileOpen(false)}
-                              >
-                                {subItem.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                item.megaMenu ? (
+                  <div key={item.label} className="border-b border-white/10 pb-6">
+                    <h3 className="text-lg font-semibold text-white mb-4">{item.label}</h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      {item.megaMenu.categories.map((category) => (
+                        <div key={category.title}>
+                          <p className="text-xs text-muted uppercase tracking-wider mb-2">{category.title}</p>
+                          <ul className="space-y-2">
+                            {category.items.slice(0, 3).map((subItem) => (
+                              <li key={subItem.name}>
+                                <Link
+                                  href={subItem.href}
+                                  className="text-sm text-white/70 hover:text-white"
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div key={item.label} className="border-b border-white/10 pb-6">
+                    <Link
+                      href={item.href}
+                      className="text-lg font-semibold text-white hover:text-accent"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                )
               ))}
               <div className="pt-6 space-y-3">
                 <Link href="/catalog" onClick={() => setMobileOpen(false)}>

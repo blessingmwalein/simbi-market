@@ -40,7 +40,7 @@ export function FeaturesSection() {
             transition={{ duration: 0.8 }}
             className="relative h-[600px] rounded-lg overflow-hidden"
           >
-            <Image src="/luxury-car-parts-precision-engineering-macro.jpg" alt="Precision engineering" fill className="object-cover" />
+            <Image src="/new/transmission.jpeg" alt="Precision engineering" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
           </motion.div>
 
